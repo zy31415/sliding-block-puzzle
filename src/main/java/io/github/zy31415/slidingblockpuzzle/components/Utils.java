@@ -1,4 +1,4 @@
-package components;
+package io.github.zy31415.slidingblockpuzzle.components;
 
 import java.util.concurrent.ThreadLocalRandom;
 

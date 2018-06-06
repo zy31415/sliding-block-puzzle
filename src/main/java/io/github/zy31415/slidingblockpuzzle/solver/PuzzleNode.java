@@ -1,4 +1,6 @@
-package components;
+package io.github.zy31415.slidingblockpuzzle.solver;
+
+import io.github.zy31415.slidingblockpuzzle.components.Puzzle;
 
 public class PuzzleNode extends Puzzle {
 
@@ -6,9 +8,12 @@ public class PuzzleNode extends Puzzle {
     private final Puzzle.Action previousAction;
 
     PuzzleNode(Puzzle puzzle, PuzzleNode parent, Puzzle.Action previousAction) {
-        super(puzzle.c, puzzle.p0);
+        super(puzzle);
         this.parent = parent;
         this.previousAction = previousAction;
+
+        puzzle.c;
+        puzzle.p0;
     }
 
     PuzzleNode(Puzzle puzzle) {

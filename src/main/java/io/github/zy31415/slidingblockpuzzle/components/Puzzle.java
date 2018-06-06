@@ -1,4 +1,4 @@
-package components;
+package io.github.zy31415.slidingblockpuzzle.components;
 
 import java.math.BigInteger;
 import java.util.Arrays;
@@ -60,8 +60,8 @@ public class Puzzle {
         initC0();
     }
 
-    BigInteger c;    // configuration
-    int p0 = -1;             // pointer of zero (blank) blockValue
+    protected BigInteger c;    // configuration
+    protected int p0 = -1;             // pointer of zero (blank) blockValue
 
     public enum Action {
         Right, Down, Left, Up;
@@ -97,10 +97,6 @@ public class Puzzle {
         this(C0, 0);
     }
 
-    public Puzzle(BigInteger c) {
-        this(c, getZeroBlock(c));
-    }
-
     public Puzzle(int [] conf) throws IllegalArgumentException {
         int numBlocks = dimension.getNumBlocks();
         if (conf.length != numBlocks)
@@ -122,9 +118,13 @@ public class Puzzle {
         }
     }
 
-    Puzzle(BigInteger c, int p0) {
+    private Puzzle(BigInteger c, int p0) {
         this.c = c;
         this.p0 = p0;
+    }
+
+    protected Puzzle(Puzzle p) {
+        this(p.c, p.p0);
     }
 
     public static Puzzle randomFactory() {

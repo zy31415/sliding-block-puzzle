@@ -1,5 +1,6 @@
-package components;
+package io.github.zy31415.slidingblockpuzzle.solver;
 
+import io.github.zy31415.slidingblockpuzzle.components.Puzzle;
 import org.junit.Test;
 
 public class PuzzleSolverTest {

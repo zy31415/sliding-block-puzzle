@@ -1,4 +1,6 @@
-package components;
+package io.github.zy31415.slidingblockpuzzle.solver;
+
+import io.github.zy31415.slidingblockpuzzle.components.Puzzle;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -3,7 +3,7 @@
 I use this repo to study artificial intelligence algorithms on solving the 
 Sliding Block Puzzle.
 
-## Depth first search (DFS)
+## Depth first solver (DFS)
 
 DFS can quickly solve 8-puzzles but it turns out that 
 it is not an efficient algorithm to solve the larger 15-puzzles.
@@ -17,15 +17,15 @@ There two pieces of evidence for this:
 deteriorate quickly as the times of shuffling increases. Experiments show that the same 
 memory error will surely appear if times of shuffling is greater than 10.
 
-## Breadth first search (BSF)
+## Breadth first solver (BSF)
 
-## Depth-limited search
+## Depth-limited solver
 
-## Iterative deepening depth-first search
+## Iterative deepening depth-first solver
 
-## Bidirectional search
+## Bidirectional solver
 
-## Heuristic search
+## Heuristic solver
 
 
 ## Reference
