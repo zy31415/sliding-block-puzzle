@@ -61,7 +61,7 @@ public class PuzzleSolverTest {
 
         Puzzle.setDimension(4, 4);
 
-        Puzzle puzzle = (new Puzzle()).shuffle(100);
+        Puzzle puzzle = (new Puzzle()).shuffle(10);
 
         puzzle.print();
         solver.search(puzzle);
