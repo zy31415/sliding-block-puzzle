@@ -2,25 +2,23 @@ package io.github.zy31415.slidingblockpuzzle.solver;
 
 import io.github.zy31415.slidingblockpuzzle.components.Puzzle;
 
-public class PuzzleNode extends Puzzle {
+public class PuzzleNode {
+
+    private final Puzzle puzzle;
 
     private final PuzzleNode parent;
     private final Puzzle.Action previousAction;
 
     PuzzleNode(Puzzle puzzle, PuzzleNode parent, Puzzle.Action previousAction) {
-        super(puzzle);
+        this.puzzle = puzzle;
         this.parent = parent;
         this.previousAction = previousAction;
-
-        puzzle.c;
-        puzzle.p0;
     }
 
     PuzzleNode(Puzzle puzzle) {
         this(puzzle, null, null);
     }
-
-    @Override
+    
     public PuzzleNode move(Action action) {
         Puzzle p = super.move(action);
 
