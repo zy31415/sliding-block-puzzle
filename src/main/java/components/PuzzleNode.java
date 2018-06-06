@@ -1,13 +1,35 @@
 package components;
 
-import java.math.BigInteger;
+public class PuzzleNode extends Puzzle {
 
-public class PuzzleNode {
-    private BigInteger c;
-    private PuzzleNode parent = null;
-    private Puzzle.Action previousAction = null;
+    private final PuzzleNode parent;
+    private final Puzzle.Action previousAction;
 
-    PuzzleNode(Puzzle p) {
+    PuzzleNode(Puzzle puzzle, PuzzleNode parent, Puzzle.Action previousAction) {
+        super(puzzle.c, puzzle.p0);
+        this.parent = parent;
+        this.previousAction = previousAction;
+    }
 
+    PuzzleNode(Puzzle puzzle) {
+        this(puzzle, null, null);
+    }
+
+    @Override
+    public PuzzleNode move(Action action) {
+        Puzzle p = super.move(action);
+
+        if (p != null)
+            return new PuzzleNode(p, this, action);
+
+        return null;
+    }
+
+    public PuzzleNode getParent() {
+        return parent;
+    }
+
+    public Action getPreviousAction() {
+        return previousAction;
     }
 }

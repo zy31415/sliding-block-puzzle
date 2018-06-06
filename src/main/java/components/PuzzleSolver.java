@@ -5,18 +5,21 @@ import java.util.Set;
 import java.util.Stack;
 
 public class PuzzleSolver {
-/*
-    private Puzzle solved;
+
+    private PuzzleNode solved;
 
     public void search(Puzzle p) {
-        Set<Puzzle> discovered = new HashSet<>();
-        Stack<Puzzle>frontier = new Stack<>();
 
-        discovered.add(p);
-        frontier.push(p);
+        PuzzleNode n0 = new PuzzleNode(p);
+
+        Set<PuzzleNode> discovered = new HashSet<>();
+        Stack<PuzzleNode> frontier = new Stack<>();
+
+        discovered.add(n0);
+        frontier.push(n0);
 
         while (!frontier.empty()) {
-            Puzzle c = frontier.pop();
+            PuzzleNode c = frontier.pop();
 
             if (c.isSolved()){
                 solved = c;
@@ -25,19 +28,20 @@ public class PuzzleSolver {
             }
 
             for (Puzzle.Action action : Puzzle.Action.values()) {
-                Puzzle c1 = c.move(action);
+                PuzzleNode c1 = c.move(action);
                 if (c1 != null && !discovered.contains(c1)) {
                     discovered.add(c1);
                     frontier.add(c1);
                 }
             }
         }
+
     }
 
     public void printResult() {
-        Stack<Puzzle> stack = new Stack<>();
+        Stack<PuzzleNode> stack = new Stack<>();
 
-        Puzzle p = solved;
+        PuzzleNode p = solved;
 
         while (p != null) {
             stack.push(p);
@@ -45,13 +49,13 @@ public class PuzzleSolver {
         }
 
         while (!stack.empty()) {
-            Puzzle.Action action = stack.pop().getAction();
+            Puzzle.Action action = stack.pop().getPreviousAction();
 
             if (action != null)
-                System.out.printf("%s\n", action.name());
+                System.out.printf("%c", action.name().charAt(0));
         }
 
         System.out.printf("\n");
     }
-*/
+
 }

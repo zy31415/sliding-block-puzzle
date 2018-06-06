@@ -1,15 +1,19 @@
 package components;
 
 import java.math.BigInteger;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 
 public class Puzzle {
 
     public static class Dimension {
         private final static int DEFAULT_SIZE = 3;
 
-        private int width;
-        private int height;
-        private int numBlocks;
+        private final int width;
+        private final int height;
+        private final int numBlocks;
 
         Dimension() throws IllegalArgumentException {
             this(DEFAULT_SIZE, DEFAULT_SIZE);
@@ -56,11 +60,19 @@ public class Puzzle {
         initC0();
     }
 
-    private BigInteger c;    // configuration
+    BigInteger c;    // configuration
     int p0 = -1;             // pointer of zero (blank) blockValue
 
     public enum Action {
-        Right, Down, Left, Up
+        Right, Down, Left, Up;
+
+        private static final List<Action> VALUES = Collections.unmodifiableList(Arrays.asList(values()));
+        private static final int SIZE = VALUES.size();
+        private static final Random RANDOM = new Random();
+
+        public static Action randomAction() {
+            return VALUES.get(RANDOM.nextInt(SIZE));
+        }
     }
 
     private static void initBases() {
@@ -110,7 +122,7 @@ public class Puzzle {
         }
     }
 
-    private Puzzle(BigInteger c, int p0) {
+    Puzzle(BigInteger c, int p0) {
         this.c = c;
         this.p0 = p0;
     }
@@ -124,8 +136,18 @@ public class Puzzle {
         return new Puzzle(inputs);
     }
 
-    public void shuffle(int n) {
+    public Puzzle shuffle(int n) {
+        Puzzle out = this;
 
+        while (n > 0) {
+            Action action  = Action.randomAction();
+            Puzzle tmp = out.move(action);
+            if (tmp != null) {
+                out = tmp;
+                n--;
+            }
+        }
+        return out;
     }
 
 
@@ -165,57 +187,54 @@ public class Puzzle {
         return -1;
     }
 
-    public boolean down() {
+    // Puzzle is essentially immutable.
+    public Puzzle down() {
         int numBlocks = dimension.getNumBlocks();
         int width = dimension.getWidth();
         int p1 = p0 + width;
         if (p1 >= numBlocks)
-            return false;
-        move(p1);
-        return true;
+            return null;
+        return move(p1);
     }
 
-    public boolean up() {
+    public Puzzle up() {
         int width = dimension.getWidth();
         int p1 = p0 - width;
         if (p1 < 0)
-            return false;
-        move(p1);
-        return true;
+            return null;
+        return move(p1);
     }
 
-    public boolean right() {
+    public Puzzle right() {
         int width = dimension.getWidth();
         int p1 = p0 + 1;
         if (p0 % width == width - 1)
-            return false;
-        move(p1);
-        return true;
+            return null;
+        return move(p1);
     }
 
-    public boolean left() {
+    public Puzzle left() {
         int width = dimension.getWidth();
         int p1 = p0 - 1;
         if (p0 % width == 0)
-            return false;
-        move(p1);
-        return true;
+            return null;
+        return move(p1);
     }
 
-    private void move(int p1) {
+    private Puzzle move(int p1) {
         BigInteger d = BigInteger.valueOf(blockValue(p1));
-        c = c.subtract(bases[p1].multiply(d)).add(bases[p0].multiply(d));
-        p0 = p1;
+        BigInteger c1 = c.subtract(bases[p1].multiply(d)).add(bases[p0].multiply(d));
+        return new Puzzle(c1, p1);
     }
 
-    public boolean move(Action action) {
+    public Puzzle move(Action action) {
         switch (action) {
             case Up: return up();
             case Down: return down();
             case Left: return left();
             case Right: return right();
         }
-        return false;
+        return null;
     }
 
     public void print() {

@@ -3,13 +3,15 @@ package components;
 import org.junit.Test;
 
 public class PuzzleSolverTest {
-/*
+
     @Test
     public void test_one_step_left() {
 
         PuzzleSolver solver = new PuzzleSolver();
 
         Puzzle puzzle = new Puzzle(new int [] {1, 0, 2, 3, 4, 5, 6, 7, 8});
+
+        puzzle.print();
 
         solver.search(puzzle);
         solver.printResult();
@@ -52,5 +54,17 @@ public class PuzzleSolverTest {
         solver.search(puzzle);
         solver.printResult();
     }
-    */
+
+    @Test
+    public void test_15_puzzle_shuffle() {
+        PuzzleSolver solver = new PuzzleSolver();
+
+        Puzzle.setDimension(4, 4);
+
+        Puzzle puzzle = (new Puzzle()).shuffle(100);
+
+        puzzle.print();
+        solver.search(puzzle);
+        solver.printResult();
+    }
 }
