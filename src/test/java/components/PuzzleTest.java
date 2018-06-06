@@ -14,9 +14,9 @@ public class PuzzleTest {
         Puzzle p = new Puzzle(arr);
 
         for (int i = 0; i < arr.length; i ++)
-            assertEquals(arr[i], p.block(i));
+            assertEquals(arr[i], p.blockValue(i));
 
-        assertEquals(0, p.block(0));
+        assertEquals(0, p.blockValue(0));
     }
 
     @Test
@@ -24,7 +24,7 @@ public class PuzzleTest {
         int [] arr = new int [] {4, 1, 2, 6, 0, 5, 3, 7, 8};
         Puzzle p = new Puzzle(arr);
 
-        assertEquals(0, p.block(4));
+        assertEquals(0, p.blockValue(4));
         assertEquals(4, p.p0);
     }
 
@@ -42,7 +42,7 @@ public class PuzzleTest {
         Puzzle p = new Puzzle(arr);
 
         for (int i = 0; i < arr.length; i ++)
-            assertEquals(arr[i], p.block(i));
+            assertEquals(arr[i], p.blockValue(i));
     }
 
     @Test(expected = IllegalArgumentException.class)
