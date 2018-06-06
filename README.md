@@ -28,7 +28,7 @@ memory error will surely appear if times of shuffling is greater than 10.
 ## Heuristic solver
 
 
-## Reference
+## References
 
 [1] Artificial Intelligence - A Modern Approach by Russel and Norvig
  
