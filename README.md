@@ -10,7 +10,8 @@ it is not an efficient algorithm to solve the larger 15-puzzles.
 There two pieces of evidence for this:
 
 1) For a randomly generated 15-puzzle, DFS always ends up with the following error:
- `java.lang.OutOfMemoryError: GC overhead limit exceeded`
+
+        `java.lang.OutOfMemoryError: GC overhead limit exceeded`
  
 2) If I create a 15-puzzle from shuffling a final state puzzle, then the performance of DFS 
 deteriorate quickly as the times of shuffling increases. Experiments show that the same 
