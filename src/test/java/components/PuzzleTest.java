@@ -22,6 +22,7 @@ public class PuzzleTest {
     @Test
     public void test_PuzzleInitializer_ZeroPosition() {
         int [] arr = new int [] {4, 1, 2, 6, 0, 5, 3, 7, 8};
+        Puzzle.setDimension(3, 3);
         Puzzle p = new Puzzle(arr);
 
         assertEquals(0, p.blockValue(4));

@@ -5,7 +5,7 @@ import java.util.Set;
 import java.util.Stack;
 
 public class PuzzleSolver {
-
+/*
     private Puzzle solved;
 
     public void search(Puzzle p) {
@@ -53,5 +53,5 @@ public class PuzzleSolver {
 
         System.out.printf("\n");
     }
-
+*/
 }
