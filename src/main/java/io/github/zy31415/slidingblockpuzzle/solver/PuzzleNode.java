@@ -11,15 +11,17 @@ public class PuzzleNode implements Node {
 
     private final PuzzleNode parent;
     private final Puzzle.Action previousAction;
+    private final int depth;
 
-    PuzzleNode(Puzzle puzzle, PuzzleNode parent, Puzzle.Action previousAction) {
+    PuzzleNode(Puzzle puzzle, PuzzleNode parent, Puzzle.Action previousAction, int depth) {
         this.puzzle = puzzle;
         this.parent = parent;
         this.previousAction = previousAction;
+        this.depth = depth;
     }
 
     PuzzleNode(Puzzle puzzle) {
-        this(puzzle, null, null);
+        this(puzzle, null, null, 0);
     }
 
     @Override
@@ -38,7 +40,7 @@ public class PuzzleNode implements Node {
         Puzzle p = puzzle.move(action);
 
         if (p != null)
-            return new PuzzleNode(p, this, action);
+            return new PuzzleNode(p, this, action, depth + 1);
 
         return null;
     }
@@ -49,6 +51,11 @@ public class PuzzleNode implements Node {
 
     public Puzzle.Action getPreviousAction() {
         return previousAction;
+    }
+
+    @Override
+    public int getDepth() {
+        return depth;
     }
 
     @Override

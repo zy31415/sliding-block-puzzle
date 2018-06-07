@@ -13,7 +13,7 @@ public class DepthFirstSearchTest {
         puzzle.print();
 
         Utils.printResult(
-                (PuzzleNode) DepthFirstSearch.search(new PuzzleNode(puzzle))
+                (PuzzleNode) new DepthFirstSearch().search(new PuzzleNode(puzzle))
         );
     }
 
@@ -23,7 +23,7 @@ public class DepthFirstSearchTest {
         Puzzle puzzle = new Puzzle(new int [] {3, 1, 2, 0, 4, 5, 6, 7, 8});
 
         Utils.printResult(
-                (PuzzleNode) DepthFirstSearch.search(new PuzzleNode(puzzle))
+                (PuzzleNode) new DepthFirstSearch().search(new PuzzleNode(puzzle))
         );
     }
 
@@ -35,7 +35,7 @@ public class DepthFirstSearchTest {
         puzzle.print();
 
         Utils.printResult(
-                (PuzzleNode) DepthFirstSearch.search(new PuzzleNode(puzzle))
+                (PuzzleNode) new DepthFirstSearch().search(new PuzzleNode(puzzle))
         );
     }
 
@@ -49,7 +49,7 @@ public class DepthFirstSearchTest {
         puzzle.print();
 
         Utils.printResult(
-            (PuzzleNode) DepthFirstSearch.search(new PuzzleNode(puzzle))
+            (PuzzleNode) new DepthFirstSearch().search(new PuzzleNode(puzzle))
         );
     }
 
@@ -63,7 +63,7 @@ public class DepthFirstSearchTest {
 
         puzzle.print();
         Utils.printResult(
-            (PuzzleNode) DepthFirstSearch.search(new PuzzleNode(puzzle))
+            (PuzzleNode) new DepthFirstSearch().search(new PuzzleNode(puzzle))
         );
     }
 }

@@ -5,4 +5,5 @@ import java.util.List;
 public interface Node {
     public boolean isGoal();
     public List<Node> next();
+    public int getDepth();
 }
