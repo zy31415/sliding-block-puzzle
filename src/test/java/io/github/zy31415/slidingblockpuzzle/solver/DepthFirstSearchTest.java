@@ -66,4 +66,30 @@ public class DepthFirstSearchTest {
             (PuzzleNode) new DepthFirstSearch().search(new PuzzleNode(puzzle))
         );
     }
+
+    @Ignore
+    @Test
+    public void test_15_puzzle_shuffle_depth_limited() {
+
+        Puzzle.setDimension(4, 4);
+
+        Puzzle puzzle = (new Puzzle()).shuffle(80);
+
+        puzzle.print();
+        Utils.printResult(
+                (PuzzleNode) new DepthFirstSearch().search(new PuzzleNode(puzzle), 100)
+        );
+    }
+
+    @Ignore
+    @Test
+    public void test_iterative_deepening_search() {
+        Puzzle.setDimension(4, 4);
+
+        Puzzle puzzle = (new Puzzle()).shuffle(80);
+
+        puzzle.print();
+        Utils.printResult(
+                (PuzzleNode) new DepthFirstSearch().iterativeDeepeningSearch(new PuzzleNode(puzzle)));
+    }
 }

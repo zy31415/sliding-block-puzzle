@@ -10,7 +10,7 @@ public class DepthFirstSearch {
     private Stack<Node> frontier;
     private int currentDepth;
 
-    public Node search(Node n0) {
+    public Node search(Node n0, int depthLimit) {
 
         discovered= new HashSet<>();
         frontier = new Stack<>();
@@ -34,7 +34,7 @@ public class DepthFirstSearch {
             }
 
             for (Node n : c.next()) {
-                if (!discovered.contains(n)) {
+                if (n.getDepth() <= depthLimit && !discovered.contains(n)) {
                     discovered.add(n);
                     frontier.add(n);
                 }
@@ -42,6 +42,22 @@ public class DepthFirstSearch {
         }
 
         return null;
+    }
+
+    public Node search(Node n0) {
+        return search(n0, Integer.MAX_VALUE);
+    }
+
+    public Node iterativeDeepeningSearch(Node n0) {
+        int depthLimit = 1;
+
+        Node node = null;
+
+        while (node == null) {
+            node = search(n0, depthLimit);
+            depthLimit++;
+        }
+        return node;
     }
 
     private void printProgress() {
