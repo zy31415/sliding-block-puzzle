@@ -174,7 +174,7 @@ public class Puzzle {
         return conf.mod(bases[n+1]).divide(bases[n]).intValue();
     }
 
-    int blockValue(int n) {
+    public int blockValue(int n) {
         return blockValue(c, n);
     }
 
@@ -246,5 +246,9 @@ public class Puzzle {
             }
             System.out.print("\n");
         }
+    }
+
+    public static Dimension getDimension() {
+        return dimension;
     }
 }
