@@ -86,7 +86,7 @@ public class DepthFirstSearchTest {
     public void test_iterative_deepening_search() {
         Puzzle.setDimension(4, 4);
 
-        Puzzle puzzle = (new Puzzle()).shuffle(80);
+        Puzzle puzzle = (new Puzzle()).shuffle(50);
 
         puzzle.print();
         Utils.printResult(

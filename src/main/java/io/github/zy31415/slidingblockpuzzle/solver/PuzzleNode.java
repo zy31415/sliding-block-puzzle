@@ -7,11 +7,12 @@ import java.util.List;
 
 public class PuzzleNode implements Node {
 
-    private final Puzzle puzzle;
+    final Puzzle puzzle;
 
     private final PuzzleNode parent;
     private final Puzzle.Action previousAction;
-    private final int depth;
+    final int depth;
+
 
     PuzzleNode(Puzzle puzzle, PuzzleNode parent, Puzzle.Action previousAction, int depth) {
         this.puzzle = puzzle;
@@ -36,7 +37,7 @@ public class PuzzleNode implements Node {
         return out;
     }
 
-    private PuzzleNode move(Puzzle.Action action) {
+    PuzzleNode move(Puzzle.Action action) {
         Puzzle p = puzzle.move(action);
 
         if (p != null)
@@ -75,4 +76,6 @@ public class PuzzleNode implements Node {
         }
         return false;
     }
+
+
 }
